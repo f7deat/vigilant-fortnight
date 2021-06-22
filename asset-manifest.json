@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/vigilant-fornight/static/css/main.e33920bf.chunk.css",
+    "main.js": "/vigilant-fornight/static/js/main.681cf05f.chunk.js",
+    "main.js.map": "/vigilant-fornight/static/js/main.681cf05f.chunk.js.map",
+    "runtime-main.js": "/vigilant-fornight/static/js/runtime-main.77e9b0b9.js",
+    "runtime-main.js.map": "/vigilant-fornight/static/js/runtime-main.77e9b0b9.js.map",
+    "static/js/2.4ccbd3e6.chunk.js": "/vigilant-fornight/static/js/2.4ccbd3e6.chunk.js",
+    "static/js/2.4ccbd3e6.chunk.js.map": "/vigilant-fornight/static/js/2.4ccbd3e6.chunk.js.map",
+    "static/js/3.1dfddfd0.chunk.js": "/vigilant-fornight/static/js/3.1dfddfd0.chunk.js",
+    "static/js/3.1dfddfd0.chunk.js.map": "/vigilant-fornight/static/js/3.1dfddfd0.chunk.js.map",
+    "index.html": "/vigilant-fornight/index.html",
+    "static/css/main.e33920bf.chunk.css.map": "/vigilant-fornight/static/css/main.e33920bf.chunk.css.map",
+    "static/js/2.4ccbd3e6.chunk.js.LICENSE.txt": "/vigilant-fornight/static/js/2.4ccbd3e6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.77e9b0b9.js",
+    "static/js/2.4ccbd3e6.chunk.js",
+    "static/css/main.e33920bf.chunk.css",
+    "static/js/main.681cf05f.chunk.js"
+  ]
+}
