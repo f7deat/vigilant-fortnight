@@ -1,25 +1,44 @@
 import './App.css';
-import packageJson from '../package.json';
 import { useState } from 'react';
 import IMessage from './models/message';
 import { MD5 } from 'crypto-js';
+import { SidebarItem } from './components/sidebar';
+import { Brand } from './components/brand';
+import { Help } from './components/help';
+import hash from './configs/hash.json'
 
 function App() {
 
   const [messages, setMessages] = useState<IMessage[]>([])
   const [message, setMessage] = useState<string>('')
+  const [type, setType] = useState<string>(hash.MD5)
+
+  function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r && 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
   const handleChat = () => {
     let newMessages = [...messages]
     newMessages.push({
       message: message,
-      fromBot: false
+      fromBot: false,
+      type: type
     })
-    let hash = MD5(message);
-    newMessages.push({
-      fromBot: true,
-      message: hash.toString()
-    })
+    if (message.toLowerCase() === 'guid') {
+      newMessages.push({
+        message: uuidv4(),
+        fromBot: true
+      })
+    } else {
+      let hash = MD5(message);
+      newMessages.push({
+        fromBot: true,
+        message: hash.toString()
+      })
+    }
     setMessages(newMessages)
     setMessage('')
   }
@@ -34,28 +53,12 @@ function App() {
     <div>
       <div className="flex">
         <nav className="sidebar">
-          <div className="brand">
-            <i className="fab fa-slack fa-2x"></i>
-            <div>
-              <div className="brand-name">Vigilant Fortnight</div>
-              <div className="brand-sologan">by <a href="https://fb.me/tan.dct" target="_blank" rel="noreferrer">tandc</a></div>
-            </div>
-          </div>
-          <div className="sidebar-item active">
-            <i className="fab fa-slack-hash"></i> MD5
-          </div>
-          <div className="sidebar-item">
-            <i className="fab fa-slack-hash"></i> SHA-1
-          </div>
-          <div className="sidebar-item">
-            <i className="fab fa-slack-hash"></i> SHA-2
-          </div>
-          <div className="sidebar-item">
-            <i className="fab fa-slack-hash"></i> SHA-3
-          </div>
-          <div className="sidebar-item">
-            <i className="fab fa-slack-hash"></i> RIPEMD-160
-          </div>
+          <Brand />
+          <SidebarItem name="MD5" setType={setType} type={type} />
+          <SidebarItem name="SHA-1" setType={setType} type={type} />
+          <SidebarItem name="SHA-2" setType={setType} type={type} />
+          <SidebarItem name="SHA-3" setType={setType} type={type} />
+          <SidebarItem name="RIPEMD-160" setType={setType} type={type} />
         </nav>
         <div className="flex-grow">
           <div className="flex">
@@ -77,19 +80,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="help">
-              <div className="title">
-                <h2>Help</h2>
-                <small>{packageJson.version}</small>
-              </div>
-              <div className="search-wrapper">
-                <input className="search" placeholder="Search something..." />
-                <i className="fas fa-search"></i>
-              </div>
-              <div className="help-content">
-                MD5 is a widely used hash function. It's been used in a variety of security applications and is also commonly used to check the integrity of files. Though, MD5 is not collision resistant, and it isn't suitable for applications like SSL certificates or digital signatures that rely on this property.
-              </div>
-            </div>
+            <Help />
           </div>
         </div>
       </div>

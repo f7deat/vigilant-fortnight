@@ -40,6 +40,8 @@ input, textarea {
 
 .sidebar-item:hover {
   background-color: var(--primary);
+  transition-property: all;
+  transition-duration: 300ms;
 }
 
 .sidebar-item.active {
