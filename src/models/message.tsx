@@ -1,6 +1,7 @@
 interface IMessage {
     message: string;
-    type: boolean
+    type?: string,
+    fromBot: boolean
 }
 
 export default IMessage
